@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hacker News - Top Stories Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        .project {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .project h2 {
+            margin-top: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .project p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .project .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .project .btn:hover {
+            background-color: #45a049;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .actions a {
+            margin: 0 5px;
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .loading {
+            text-align: center;
+            color: #007BFF;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="/images/logo.png" alt="Logo" class="logo">
+    <h1>Pesquisa de Top Stories</h1>
+    <form id="searchForm">
+        <input type="text" id="query" name="term" placeholder="Digite aqui o texto a pesquisar" required />
+        <button type="submit">Pesquisar</button>
+    </form>
+    <div class="actions">
+        <a href="/googol/search/searchHackerNews">Esvaziar Pesquisas</a>
+        <a href="/googol/search">Selecionar outro tipo de Pesquisa</a>
+    </div>
+    <div class="results" id="results"></div>
+    <div class="loading" id="loading" style="display: none;">Pesquisando...</div>
+</div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.getElementById('query').value;
+        const resultsDiv = document.getElementById('results');
+        const loadingDiv = document.getElementById('loading');
+
+        resultsDiv.innerHTML = ''; // Clear previous results
+        loadingDiv.style.display = 'block'; // Show loading message
+
+        fetch('/googol/search/searchHackerNews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'term=' + encodeURIComponent(query)
+        })
+            .then(response => response.json())
+            .then(data => {
+                loadingDiv.style.display = 'none'; // Hide loading message
+                if (data.length > 0) {
+                    data.forEach(url => {
+                        const projectDiv = document.createElement('div');
+                        projectDiv.className = 'project';
+                        projectDiv.innerHTML = `
+                        <h2>${url}</h2>
+                        <a href="${url}" class="btn">Ver Storie</a>
+                    `;
+                        resultsDiv.appendChild(projectDiv);
+                    });
+                } else {
+                    resultsDiv.innerHTML = '<p>No results found.</p>';
+                }
+            })
+            .catch(error => {
+                loadingDiv.style.display = 'none'; // Hide loading message
+                resultsDiv.innerHTML = '<p>Error fetching results. Please try again later.</p>';
+                console.error('Error:', error);
+            });
+    });
+</script>
+</body>
+</html>

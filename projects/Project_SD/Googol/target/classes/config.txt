@@ -1,0 +1,9 @@
+gateway.rmi.port=5000
+gateway.rmi.host=10.16.2.161
+
+downloader.port=6100
+downloader.host=10.16.0.131
+downloader.multicast.port=101
+downloader.multicast.group=239.0.0.1
+
+indexStorageBarrel.host = 10.16.0.131

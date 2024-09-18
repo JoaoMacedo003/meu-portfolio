@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        .back-to-home {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="images/logo.png" alt="Googol Logo">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <label for="username">Nome de Utilizador:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Palavra-passe:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+        <a href="/" class="back-to-home">Voltar atrás</a>
+    </form>
+    <div th:if="${message}">
+        <p th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>

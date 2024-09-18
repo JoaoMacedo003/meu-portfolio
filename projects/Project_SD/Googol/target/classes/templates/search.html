@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Googol Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        ol {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        ol li {
+            margin: 0 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        .container img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        .option4-container {
+            margin-top: 40px; /* Maior espaço para a última opção */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Caminho da imagem corrigido -->
+    <img src="/images/logo.png" alt="Logo" class="logo">
+    <h1>Googol Search</h1>
+    <p>Por favor, selecione o tipo de pesquisa que deseja fazer:</p>
+    <ol>
+        <li><a href="#" onclick="selectOption('option1')">1. Pesquisa pelo Gateway</a></li>
+        <li><a href="#" onclick="selectOption('option2')">2. Pesquisa pelo Hacker News - top stories</a></li>
+        <li><a href="#" onclick="selectOption('option3')">3. Pesquisa pelo Hacker News - Projects</a></li>
+    </ol>
+    <div class="option4-container">
+        <a href="#" onclick="selectOption('option4')">Voltar ao Googol</a>
+    </div>
+</div>
+
+<script>
+    function selectOption(option) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/googol/search';
+
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = 'option';
+        hiddenField.value = option;
+
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</body>
+</html>

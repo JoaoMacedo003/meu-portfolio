@@ -1,0 +1,14 @@
+com\example\gogool\model\CrawledData.class
+com\example\gogool\service\Downloader$WebCrawlerer.class
+com\example\gogool\model\Gateway.class
+com\example\gogool\controller\WebPageController.class
+com\example\gogool\GogoolApplication.class
+com\example\gogool\service\Downloader$TCP.class
+com\example\gogool\rmi\RMIGateway.class
+com\example\gogool\service\HackerNewsService.class
+com\example\gogool\controller\GogoolController.class
+com\example\gogool\model\IndexStorageBarrel$CentralBarrel.class
+com\example\gogool\model\IndexStorageBarrel.class
+com\example\gogool\rmi\RMIStorageBarrel.class
+com\example\gogool\service\Client.class
+com\example\gogool\service\Downloader.class

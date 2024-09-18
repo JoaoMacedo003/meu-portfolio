@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pesquisar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 50%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .results {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .pagination a:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination a.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .pagination a.active {
+            background-color: #0056b3;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .actions a, .actions button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions a:hover, .actions button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="/images/logo.png" alt="Logo" class="logo">
+    <h1>Pesquisa no Gateway</h1>
+    <form th:action="@{/googol/search/searchGateway}" method="post">
+        <label for="query">Pesquisa:</label>
+        <input type="text" id="query" name="query" required th:value="${query}"/>
+        <button type="submit">Pesquisar</button>
+    </form>
+    <div class="actions">
+        <a href="/googol/search/searchGateway/clear">Esvaziar Pesquisas</a>
+        <a href="/googol/search">Selecionar outro tipo de Pesquisa</a>
+    </div>
+    <div class="results" th:if="${results}">
+        <h2>Resultados da Pesquisa:</h2>
+        <div th:each="item : ${results}">
+            <div class="result-item" th:text="${item}"></div>
+        </div>
+    </div>
+    <div class="pagination" th:if="${totalPages > 1}">
+        <a th:if="${currentPage > 0}"
+           th:classappend="${currentPage <= 0} ? 'disabled'"
+           th:href="@{/googol/search/searchGateway/results(query=${query}, page=${currentPage - 1}, size=${size})}">&laquo; Anterior</a>
+        <a th:each="pageNum : ${pageNumbers}"
+           th:text="${pageNum + 1}"
+           th:classappend="${pageNum == currentPage} ? 'active'"
+           th:href="@{/googol/search/searchGateway/results(query=${query}, page=${pageNum}, size=${size})}">1</a>
+        <a th:if="${currentPage < totalPages - 1 && currentPage < 9}"
+           th:classappend="${currentPage >= totalPages - 1 || currentPage >= 9} ? 'disabled'"
+           th:href="@{/googol/search/searchGateway/results(query=${query}, page=${currentPage + 1}, size=${size})}">Próxima &raquo;</a>
+    </div>
+</div>
+</body>
+</html>

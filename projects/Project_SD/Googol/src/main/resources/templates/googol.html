@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Googol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        ol {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        ol li {
+            display: inline-block;
+            margin: 10px 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        .container img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <h1>Googol</h1>
+    <p>Por favor, selecione uma opção:</p>
+    <ol>
+        <li><a href="#" onclick="selectOption('option1')">1. Introduzir um URL</a></li>
+        <li><a href="#" onclick="selectOption('option2')">2. Pesquisar</a></li>
+        <li><a href="#" onclick="selectOption('option3')">3. Consultar lista de páginas com ligação para uma página introduzida</a></li>
+        <li><a href="#" onclick="selectOption('option4')">4. Stats | Página de administração (Não disponível)</a></li>
+        <li><a href="#" onclick="selectOption('option5')">5. Logout</a></li>
+    </ol>
+</div>
+
+<script>
+    function selectOption(option) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/googol';
+
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = 'option';
+        hiddenField.value = option;
+
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</body>
+</html>
