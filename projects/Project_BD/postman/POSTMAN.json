@@ -1,0 +1,1262 @@
+{
+	"info": {
+		"_postman_id": "1fccf2aa-9346-4108-8fa3-f8c2df587ad8",
+		"name": "Stream_demo Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27476480"
+	},
+	"item": [
+		{
+			"name": "Admin_1",
+			"item": [
+				{
+					"name": "First Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/dbproj/first_admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"first_admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"adminjwt_token\", jsonData.results);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"securepassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add admin_neiro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"number_cards\" : \"0\",\n    \"username\" : \"admin_neiro\",\n    \"email\" : \"neiro@example.pt\",\n    \"password\" : \"neiro123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Artist Profjam",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" :\"favilla\",\n    \"email\": \"favs@gmail.pt\",\n    \"password\": \"favs123\",\n    \"name\": \"Profjam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/artist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"artist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate_pre_paid_card50",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number_cards\": \"3\",\r\n    \"card_price\" : \"50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/card",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate_pre_paid_card25",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number_cards\": \"3\",\r\n    \"card_price\" : \"25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/card",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate_pre_paid_card Copy 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number_cards\": \"3\",\r\n    \"card_price\" : \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/card",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"card"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin_2",
+			"item": [
+				{
+					"name": "Login Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"adminjwt_token1\", jsonData.results);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin_neiro\",\r\n    \"password\" : \"neiro123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Admin admin_rafa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number_cards\" : \"0\",\r\n    \"username\" : \"admin_rafa\",\r\n    \"email\" : \"rafa@example.pt\",\r\n    \"password\" : \"rafa123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Admin admin_joao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number_cards\" : \"0\",\r\n    \"username\" : \"admin_joao\",\r\n    \"email\" : \"joao@example.pt\",\r\n    \"password\" : \"joao123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Artist MIGUELLL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" :\"miguel_artist\",\r\n    \"email\": \"miguel@gmail.pt\",\r\n    \"password\": \"miguel123\",\r\n    \"name\": \"MIGUELLL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/artist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"artist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Artist BISPO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminjwt_token1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" :\"antonio_artist\",\r\n    \"email\": \"toni@gmail.pt\",\r\n    \"password\": \"antonio123\",\r\n    \"name\": \"BISPO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/artist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"artist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artist miguellll related",
+			"item": [
+				{
+					"name": "Login Artist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"aristjwt_token\", jsonData.results);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"miguel_artist\",\n    \"password\":\"miguel123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Song",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{aristjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"song_name\" : \"ANTES \",\n    \"release_date\": \"2023/03/13\",\n    \"genre\": \"Rock\",\n    \"publisher\" : \"Miami Brand\",    //record_label\n    \"other_artists\" : [\"BISPO\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/song",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"song"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Song Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{aristjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"song_name\" : \"Agora \",\n    \"release_date\": \"2023/03/13\",\n    \"genre\": \"Pop\",\n    \"publisher\" : \"Miami Brand\",    //record_label\n    \"other_artists\" : [\"Profjam\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/song",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"song"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Album",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{aristjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Caixa eeee\",\r\n    \"release_date\" : \"2023/07/16\",\r\n    \"publisher\" :\"XZX\",   //RECORD_LABEL\r\n    \"songs\" : [2, {\"song_name\" : \"How YOU DOING\", \"release_date\":\"2023/07/16\", \"genre\": \"Rock\",\"publisher\":\"Michael Davis\",\"other_artists\": [\"BISPO\"]}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/album",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"album"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artist Bispo related",
+			"item": [
+				{
+					"name": "Login Artist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"aristjwt1_token\", jsonData.results);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"antonio_artist\",\n    \"password\":\"antonio123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Song",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{aristjwt1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"song_name\" : \"Dia de d \",\n    \"release_date\": \"2023/03/13\",\n    \"genre\": \"Reggae\",\n    \"publisher\" : \"Miami Brand\",    //record_label\n    \"other_artists\" : []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/song",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"song"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Album",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{aristjwt1_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"The epilogue\",\r\n    \"release_date\" : \"2023/07/16\",\r\n    \"publisher\" :\"XZX\",   //RECORD_LABEL\r\n    \"songs\" : [{\"song_name\" : \"How you Going\", \"release_date\":\"2023/07/16\", \"genre\": \"Rock\",\"publisher\":\"Michael Davis\",\"other_artists\": [\"MIGUELLL\"]}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/album",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"album"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User_Related",
+			"item": [
+				{
+					"name": "Registrate user Sara_03",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\": \"Sara_03\",\r\n\"email\": \"sarita@example.com\",\r\n\"password\":\"Sara123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrate user Filipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\": \"ana\",\r\n\"email\": \"filipe@example.com\",\r\n\"password\":\"ana123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrate user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"username\": \"Miguel\",\n\"email\": \"Mikas@example.com\",\n\"password\":\"Miguel123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"userjwt_token\", jsonData.results);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"ana\",\n    \"password\" :\"ana123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\":\"Rua do Casal Velho\",\r\n    \"telephone\":\"000000000\",\r\n    \"period\":\"month\",\r\n    \"cards\":[\"2416688403505373\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/subscription",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail_artist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// http://localhost:5000/dbproj/artist_info/{artist_id}\r",
+									"pm.globals.set(\"artist_id\", \"3\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/dbproj/artist_info/{{artist_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"artist_info",
+								"{{artist_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"playlist_name\": \"Sad Songs\",\r\n    \"visibility\": \"public\",\r\n    \"songs\": [\"2\", \"3\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/playlist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"playlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Play song",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"song_id\", \"3\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/dbproj/{{song_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"{{song_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Song",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"keyword\", \"How\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/dbproj/song/{{keyword}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"song",
+								"{{keyword}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leave Comment/feedback",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"song_id\", \"3\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"Muito bom som, continua com o bom trabalho!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/dbproj/comments/{{song_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"comments",
+								"{{song_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate monthly report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{userjwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/dbproj/report/{year-month}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"dbproj",
+								"report",
+								"{year-month}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Admin1JWT",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4NjUxNDQyOSwianRpIjoiZDgxMzJiYjgtZDlmOS00MzFmLTg4MWUtMmQyMGI0ZjA4NjFkIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluIiwibmJmIjoxNjg2NTE0NDI5LCJleHAiOjE2ODY1MTUzMjl9.-SPBBt0NvxPOsaFDqYOKzqUN1WpRsZKMicEwxmlML5o"
+		}
+	]
+}
