@@ -1,0 +1,20 @@
+Compilação:
+
+-> servidor -> gcc -o sv sv_* -pthread
+-> cliente -> gcc -o tm term* -pthread
+-> make 
+
+
+Correr os programas:
+
+-> Servidor -> ./sv 9000 9001 credentials
+
+-> User UDP(administrador) -> nc -v -u 193.137.100.1 9001
+
+-> User TCP(jornalistas e leitores) -> ./tm 193.137.100.1 9000
+
+
+
+
+
+
