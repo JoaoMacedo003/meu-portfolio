@@ -1,0 +1,1 @@
+## Os conteúdos desta pasta são projetos realizados na universidade e/ou projetos pessoais.
