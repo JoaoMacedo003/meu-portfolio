@@ -1,0 +1,29 @@
+Descrição resumida dos arquivos gerados
+
+gdp_per_capita_long.csv
+• Contém: iso3, year, gdp_pc_usd
+• Significado: PIB per capita em dólares correntes para cada país (ISO-3) entre 2011–2021.
+
+manufacturing_pct_gdp_long.csv
+• Contém: iso3, year, manufacturing_pct_gdp
+• Significado: Participação do valor agregado da manufatura (% do PIB) para cada país no período 2011–2021.
+
+resource_rents_pct_gdp_long.csv
+• Contém: iso3, year, resource_rents_pct_gdp
+• Significado: Rendas provenientes de recursos naturais (% do PIB) para cada país em 2011–2021.
+
+tertiary_enrolment_pct_long.csv
+• Contém: iso3, year, tertiary_enrolment_pct
+• Significado: Taxa bruta de matrícula no ensino superior (% da população em idade escolar) para cada país de 2011 a 2021.
+
+population_density_long.csv
+• Contém: iso3, year, population_density
+• Significado: Densidade populacional (habitantes por km² de área terrestre) para cada país entre 2011 e 2021.
+
+age1564_pct_long.csv
+• Contém: iso3, year, age1564_pct
+• Significado: Porcentagem da população na faixa etária de 15–64 anos para cada país no período 2011–2021.
+
+GII_score_long.csv
+• Contém: iso3, year, gii_score
+• Significado: Pontuação do Índice Global de Inovação (Global Innovation Index, 0–100) para cada país e ano de 2011 a 2021.

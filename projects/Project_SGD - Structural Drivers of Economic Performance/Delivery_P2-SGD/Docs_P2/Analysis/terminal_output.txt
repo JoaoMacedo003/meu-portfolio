@@ -1,0 +1,202 @@
+=== Estatísticas de cobertura por país (mínimo 5 anos) ===
+count    134.000000
+mean      10.261194
+std        1.992199
+min        2.000000
+25%       11.000000
+50%       11.000000
+75%       11.000000
+max       11.000000
+Name: count, dtype: float64
+
+Países com menos de 5 anos (serão excluídos):
+country
+LSO    4
+GMB    4
+FJI    4
+LAO    3
+SYC    2
+BLZ    2
+Name: count, dtype: int64
+
+Total de países após filtragem: 128 (de 134)
+
+=====================================================
+
+=====================================================
+
+
+
+=== Descriptive Statistics ===
+       manufacturing_pct_gdp  resource_rents_pct_gdp  tertiary_enrolment_pct  ...  population_density  age1564_pct  log_gdp
+count                1356.00                 1356.00                 1356.00  ...             1356.00      1356.00  1356.00
+mean                   12.96                18241.68                   47.10  ...              276.43        64.66    25.40
+std                     5.59                22666.23                   28.98  ...              944.20         6.45     1.85
+min                     0.91                  210.24                    0.85  ...                1.79        48.13    21.28
+25%                     9.21                 2952.42                   20.40  ...               44.95        62.18    23.84
+50%                    12.25                 7492.79                   48.16  ...               89.99        65.53    25.20
+75%                    16.28                26764.10                   69.05  ...              187.27        68.22    26.67
+max                    34.86               133711.79                  150.61  ...             7965.88        85.21    30.80
+
+[8 rows x 7 columns]
+
+=====================================================
+
+=====================================================
+
+
+
+=== OLS COMPLETO (com variáveis normalizadas) ===
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                log_gdp   R-squared:                       0.397
+Model:                            OLS   Adj. R-squared:                  0.394
+Method:                 Least Squares   F-statistic:                     16.24
+Date:                Sun, 08 Jun 2025   Prob (F-statistic):           8.26e-14
+Time:                        00:06:42   Log-Likelihood:                -2414.5
+No. Observations:                1356   AIC:                             4843.
+Df Residuals:                    1349   BIC:                             4880.
+Df Model:                           6
+Covariance Type:              cluster
+==========================================================================================
+                             coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 25.4007      0.126    201.464      0.000      25.154      25.648
+manufacturing_pct_gdp      0.4639      0.144      3.219      0.001       0.181       0.746
+resource_rents_pct_gdp     0.2419      0.214      1.132      0.258      -0.177       0.661
+tertiary_enrolment_pct     0.3485      0.155      2.254      0.024       0.045       0.652
+gii_score                  0.5355      0.259      2.070      0.038       0.029       1.043
+population_density        -0.0791      0.100     -0.795      0.427      -0.274       0.116
+age1564_pct                0.0499      0.126      0.397      0.692      -0.196       0.296
+==============================================================================
+Omnibus:                       28.229   Durbin-Watson:                   0.210
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               22.785
+Skew:                           0.238   Prob(JB):                     1.13e-05
+Kurtosis:                       2.580   Cond. No.                         4.60
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+=== MODELO 1: Indústria + Recursos ===
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                log_gdp   R-squared:                       0.308
+Model:                            OLS   Adj. R-squared:                  0.307
+Method:                 Least Squares   F-statistic:                     20.93
+Date:                Sun, 08 Jun 2025   Prob (F-statistic):           1.40e-08
+Time:                        00:06:43   Log-Likelihood:                -2507.7
+No. Observations:                1356   AIC:                             5021.
+Df Residuals:                    1353   BIC:                             5037.
+Df Model:                           2
+Covariance Type:              cluster
+==========================================================================================
+                             coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 25.4007      0.135    188.480      0.000      25.137      25.665
+manufacturing_pct_gdp      0.6213      0.152      4.085      0.000       0.323       0.919
+resource_rents_pct_gdp     0.8521      0.176      4.834      0.000       0.507       1.198
+==============================================================================
+Omnibus:                       18.416   Durbin-Watson:                   0.217
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               17.652
+Skew:                           0.245   Prob(JB):                     0.000147
+Kurtosis:                       2.731   Cond. No.                         1.06
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+=== MODELO 2: + Inovação (sem educação) ===
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                log_gdp   R-squared:                       0.374
+Model:                            OLS   Adj. R-squared:                  0.373
+Method:                 Least Squares   F-statistic:                     27.10
+Date:                Sun, 08 Jun 2025   Prob (F-statistic):           1.30e-13
+Time:                        00:06:43   Log-Likelihood:                -2439.2
+No. Observations:                1356   AIC:                             4886.
+Df Residuals:                    1352   BIC:                             4907.
+Df Model:                           3
+Covariance Type:              cluster
+==========================================================================================
+                             coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 25.4007      0.128    199.099      0.000      25.151      25.651
+manufacturing_pct_gdp      0.4629      0.139      3.323      0.001       0.190       0.736
+resource_rents_pct_gdp     0.1792      0.214      0.836      0.403      -0.241       0.599
+gii_score                  0.8323      0.213      3.913      0.000       0.415       1.249
+==============================================================================
+Omnibus:                       39.878   Durbin-Watson:                   0.214
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               26.283
+Skew:                           0.214   Prob(JB):                     1.96e-06
+Kurtosis:                       2.469   Cond. No.                         3.18
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+=== MODELO 3: + Inovação + Educação ===
+                            OLS Regression Results
+==============================================================================
+Dep. Variable:                log_gdp   R-squared:                       0.395
+Model:                            OLS   Adj. R-squared:                  0.393
+Method:                 Least Squares   F-statistic:                     22.69
+Date:                Sun, 08 Jun 2025   Prob (F-statistic):           3.68e-14
+Time:                        00:06:43   Log-Likelihood:                -2416.6
+No. Observations:                1356   AIC:                             4843.
+Df Residuals:                    1351   BIC:                             4869.
+Df Model:                           4
+Covariance Type:              cluster
+==========================================================================================
+                             coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 25.4007      0.126    201.273      0.000      25.153      25.648
+manufacturing_pct_gdp      0.4723      0.142      3.320      0.001       0.194       0.751
+resource_rents_pct_gdp     0.2524      0.203      1.245      0.213      -0.145       0.650
+gii_score                  0.5119      0.254      2.019      0.043       0.015       1.009
+tertiary_enrolment_pct     0.3740      0.146      2.570      0.010       0.089       0.659
+==============================================================================
+Omnibus:                       30.022   Durbin-Watson:                   0.208
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               24.672
+Skew:                           0.255   Prob(JB):                     4.39e-06
+Kurtosis:                       2.580   Cond. No.                         4.13
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+
+=====================================================
+
+=====================================================
+
+
+
+Random Forest R² (treino): 0.991
+Random Forest R² (cross-val médio): 0.307
+Desvio padrão (cross-val): 0.055
+
+=== Importância (Random Forest) ===
+resource_rents_pct_gdp    0.388267
+population_density        0.200580
+manufacturing_pct_gdp     0.150528
+gii_score                 0.122773
+tertiary_enrolment_pct    0.077765
+age1564_pct               0.060087
+dtype: float64
+
+=====================================================
+
+=====================================================
+
+
+
+=== Cluster Summary ===
+               manufacturing_pct_gdp  resource_rents_pct_gdp  ...  population_density  age1564_pct
+cluster_label                                                 ...
+0                              14.17                 9971.27  ...              161.58        67.44
+1                              12.29                50672.91  ...              667.49        67.38
+2                              10.98                 1905.98  ...              110.91        56.12
+
+[3 rows x 6 columns]
+
+=====================================================
