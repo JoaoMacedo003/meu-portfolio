@@ -1,0 +1,105 @@
+Emanuel Ferreira
+11/2/2004
+12
+A
+1
+10.000000
+
+Jose Carreira
+12/3/2004
+12
+B
+2
+20.400000
+
+Maria Madalena
+13/4/2004
+12
+C
+3
+45.540000
+
+Bruno Silva
+15/8/2004
+12
+B
+4
+63.360000
+
+Macedo Figueiredo
+27/6/2004
+12
+C
+5
+80.400000
+
+Simao Bastos
+19/2/2004
+12
+F
+6
+35.820000
+
+Diogo Honorio
+27/9/2004
+12
+A
+7
+51.990000
+
+Joana Silverio
+2/3/2004
+12
+B
+8
+65.320000
+
+Angela Costa
+25/12/2004
+12
+A
+9
+78.500000
+
+Patricia Liliana
+24/7/2004
+12
+C
+10
+92.700000
+
+Suzana Costa
+30/5/2004
+12
+E
+11
+21.800000
+
+Anibal Evaristo
+13/3/2004
+12
+A
+12
+43.120000
+
+Paulo
+23/1/2000
+12
+B
+13
+11.420000
+
+Paulo Zagalo
+1/1/2004
+12
+D
+14
+40.270000
+
+Ines Silva
+12/4/2004
+12
+A
+15
+49.000000
+
